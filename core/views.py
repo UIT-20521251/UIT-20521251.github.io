@@ -81,12 +81,13 @@ def signin_view(request):
         return render(request, 'Signin.html')
 
 
-@login_required(login_url='Signin')
+@login_required(login_url='/Signin')
 def logout_view(request):
     auth.logout(request)
     return render(request, 'Signin.html')
 
 
+@login_required(login_url='/Signin')
 def auction_view(request):
     user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)

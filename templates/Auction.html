@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +36,6 @@
             {% endif %}
         </div>
         <div class="header_item2">
-            {% load staticfile %}
             <a href="/"><img style="width: 350px;" src="{% static 'image/logoLacViet.png' %}" alt=""></a>
             <div class="form">
                 <form action="/Search/" method="POST">

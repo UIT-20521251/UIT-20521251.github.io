@@ -9,7 +9,9 @@
     <script src="http://kit.fontawesome.com/d3ee10eebc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/Auction.css'%}" />
+    {% block customcss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Auction.css' %}">
+    {% endblock %}
 </head>
 
 <body>

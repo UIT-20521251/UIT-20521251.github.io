@@ -27,9 +27,9 @@ environ.Env.read_env()
 SECRET_KEY = 'django-insecure-+^j(&wyy73ki3&jvoo#uj#y7bf0pu^)hhf!)0rzq*kxu)asdvp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://bmweb-iot.onrender.com/']
 
 
 # Application definition

@@ -124,7 +124,7 @@
             {%if goods_list %}
             {% for goods in goods_list|slice:"0:12" %}
             <div class="TinTuc">
-                <a href="/Goods/{{goods.id}}"><img src="{{goods.image.url}}" alt=""></a>
+                <a href="/Goods/{{goods.id}}"><img src="{% media '..{{goods.image.url}}' %}" alt=""></a>
                 <a href="/Goods/{{goods.id}}">{{goods.name}}</a>
                 <p> </p>
                 <div>Giá khởi điểm:</div>

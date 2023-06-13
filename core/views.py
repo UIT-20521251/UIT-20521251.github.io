@@ -6,6 +6,7 @@ from .models import Profile, Goods, history, Notification
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.contrib.auth import get_user
+from django.views.decorators.csrf import csrf_exempt
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 
@@ -20,6 +21,7 @@ def Information_view(request):
     return render(request, 'Information.html')
 
 
+@csrf_exempt
 def signup_view(request):
     if request.method == 'POST':
         firstname = request.POST['firstname']
@@ -66,6 +68,7 @@ def signup_view(request):
         return render(request, 'Signup.html')
 
 
+@csrf_exempt
 def signin_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -83,12 +86,14 @@ def signin_view(request):
         return render(request, 'Signin.html')
 
 
+@csrf_exempt
 @login_required(login_url='/Signin')
 def logout_view(request):
     auth.logout(request)
     return render(request, 'Signin.html')
 
 
+@csrf_exempt
 @login_required(login_url='/Signin')
 def auction_view(request):
     user_object = get_user(request)
@@ -131,6 +136,7 @@ def auction_view(request):
     return render(request, 'Auction.html', context)
 
 
+@csrf_exempt
 @login_required(login_url='Signin')
 def lienhe_view(request):
     user_object = get_user(request)

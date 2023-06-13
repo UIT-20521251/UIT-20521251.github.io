@@ -45,7 +45,7 @@
             <a href="/"><img style="width: 350px;" src="{% static 'image/logoLacViet.png' %}" alt=""></a>
             <div class="form">
                 <form action="/Search/" method="POST">
-                    {% csrf_token %}
+                    <!--{% csrf_token %}-->
                     <input class="input1" list="types" name="types" placeholder=" Danh mục">
                     <datalist id="types">
                         <option value="Hàng hiệu">
@@ -76,7 +76,7 @@
                 </li>
             </nav>
             <form action="/Search/" method="POST">
-                {%csrf_token%}
+                <!--{%csrf_token%}-->
                 <input type="hidden" list="types" name="types">
                 <input type="hidden" id="searched" name="searched" placeholder="Tìm kiếm...">
                 <button class="but1">

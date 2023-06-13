@@ -6,7 +6,8 @@ from .models import Profile, Goods, history, Notification
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.contrib.auth import get_user
-
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 
 # Create your views here.
 

@@ -24,10 +24,10 @@ environ.Env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+^j(&wyy73ki3&jvoo#uj#y7bf0pu^)hhf!)0rzq*kxu)asdvp'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='124h234jh23')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 
@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'render.apps.RenderConfig'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

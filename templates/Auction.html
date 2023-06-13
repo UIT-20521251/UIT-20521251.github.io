@@ -24,7 +24,7 @@
         <div class="header_item1">
             <div>Liên hệ: 0818666***/0979334***</div>
             <div>Email: 20521251@gm.uit.edu.vn </div>
-            <!--{% if user.username %}
+            {% if user.username %}
             <div class="dropdown1">
 
                 <span><i class="fa-regular fa-user"></i> <b>{{user.username}}</b> <i
@@ -39,7 +39,7 @@
             {% else %}
             <a style="color: rgb(161, 161, 161)" href="/Signin">Đăng nhập</a>
             <a style="color: rgb(161, 161, 161)" href="/Signup">Đăng ký</a>
-            {% endif %}-->
+            {% endif %}
         </div>
         <div class="header_item2">
             <a href="/"><img style="width: 350px;"
@@ -47,7 +47,7 @@
                     alt=""></a>
             <div class="form">
                 <form action="/Search/" method="POST">
-                    <!--{% csrf_token %}-->
+                    {% csrf_token %}
                     <input class="input1" list="types" name="types" placeholder=" Danh mục">
                     <datalist id="types">
                         <option value="Hàng hiệu">
@@ -78,7 +78,7 @@
                 </li>
             </nav>
             <form action="/Search/" method="POST">
-                <!--{%csrf_token%}-->
+                {%csrf_token%}
                 <input type="hidden" list="types" name="types">
                 <input type="hidden" id="searched" name="searched" placeholder="Tìm kiếm...">
                 <button class="but1">
@@ -281,7 +281,7 @@
                         <div>Nhanh tay tìm kiếm vật phẩm bạn cần nào !</div>
                         <div></div>
                         <form action="/Search/" method="POST">
-                            <!--{%csrf_token%}-->
+                            {%csrf_token%}-
                             <input type="text" id="searched" name="searched" placeholder="Tìm kiếm...">
                             <button><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>

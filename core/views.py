@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Profile, Goods, history, Notification
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from django.contrib.auth import get_user
 
 
 # Create your views here.
@@ -89,7 +90,7 @@ def logout_view(request):
 
 @login_required(login_url='/Signin')
 def auction_view(request):
-    user_object = User.objects.get(username=request.user.username)
+    user_object = get_user(request)
     user_profile = Profile.objects.get(user=user_object)
     goods_list = Goods.objects.all().order_by('startingdate')
     goods_list1 = Goods.objects.filter(type="Tài sản thanh lý")
@@ -131,7 +132,7 @@ def auction_view(request):
 
 @login_required(login_url='Signin')
 def lienhe_view(request):
-    user_object = User.objects.get(username=request.user.username)
+    user_object = get_user(request)
     user_profile = Profile.objects.get(user=user_object)
     if request.method == 'POST':
         user = request.user.username
@@ -162,7 +163,7 @@ def lienhe_view(request):
 
 @login_required(login_url='Signin')
 def goods_view(request, pk):
-    user_object = User.objects.get(username=request.user.username)
+    user_object = get_user(request)
     user_profile = Profile.objects.get(user=user_object)
     goods_profile = Goods.objects.get(id=pk)
     goods_list = Goods.objects.filter(

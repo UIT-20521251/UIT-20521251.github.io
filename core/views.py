@@ -5,18 +5,19 @@ from django.contrib import messages
 from .models import Profile, Goods, history, Notification
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
-from django.contrib.auth import get_user
 from django.views.decorators.csrf import csrf_exempt
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 
+
 # Create your views here.
 
-
+@csrf_exempt
 def home_view(request):
     return render(request, 'Home.html')
 
 
+@csrf_exempt
 def Information_view(request):
     return render(request, 'Information.html')
 
@@ -96,7 +97,7 @@ def logout_view(request):
 @csrf_exempt
 @login_required(login_url='/Signin')
 def auction_view(request):
-    user_object = get_user(request)
+    user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
     goods_list = Goods.objects.all().order_by('startingdate')
     goods_list1 = Goods.objects.filter(type="Tài sản thanh lý")
@@ -139,7 +140,7 @@ def auction_view(request):
 @csrf_exempt
 @login_required(login_url='Signin')
 def lienhe_view(request):
-    user_object = get_user(request)
+    user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
     if request.method == 'POST':
         user = request.user.username
@@ -168,9 +169,10 @@ def lienhe_view(request):
         return render(request, 'Lienhe.html', {'user_profile': user_profile})
 
 
+@csrf_exempt
 @login_required(login_url='Signin')
 def goods_view(request, pk):
-    user_object = get_user(request)
+    user_object = User.objects.get(username=request.user.username)
     user_profile = Profile.objects.get(user=user_object)
     goods_profile = Goods.objects.get(id=pk)
     goods_list = Goods.objects.filter(
@@ -199,6 +201,7 @@ def goods_view(request, pk):
         return render(request, 'Goods.html', context)
 
 
+@csrf_exempt
 @ login_required(login_url='Signin')
 def search_view(request):
     if request.method == 'POST':
@@ -213,12 +216,14 @@ def search_view(request):
         return render(request, 'Search.html')
 
 
+@csrf_exempt
 @ login_required(login_url='Signin')
 def searchtype_view(request, types):
     goods_list = Goods.objects.filter(type__icontains=types)
     return render(request, 'Search.html', {'goods_list': goods_list})
 
 
+@csrf_exempt
 @ login_required(login_url='Signin')
 def user_view(request):
     user_object = User.objects.get(username=request.user.username)
@@ -249,6 +254,7 @@ def user_view(request):
     return render(request, 'User.html', context)
 
 
+@csrf_exempt
 @ login_required(login_url='Signin')
 def changepw_view(request):
     user_object = User.objects.get(username=request.user.username)
